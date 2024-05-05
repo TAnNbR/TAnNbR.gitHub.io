@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="Tam&#39;s blog">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Tam&#39;s blog">
+    <meta name="keyword"  content="hexo,Tam,Tam&#39;s blog,智能合约开发,Aircloud">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Hardhat配置 - Tam&#39;s blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Tam's blog" type="application/atom+xml">
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> ˋ( ° ▽、° ) </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Tam</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hardhat%E9%85%8D%E7%BD%AE"><span class="toc-text">Hardhat配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85wsl"><span class="toc-text">安装wsl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-Linux-%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-text">设置 Linux 用户名和密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E7%B3%BB%E7%BB%9F%E6%A2%AF%E5%AD%90"><span class="toc-text">挂系统梯子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#curl"><span class="toc-text">curl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvm"><span class="toc-text">nvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js"><span class="toc-text">Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git"><span class="toc-text">git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E5%B9%B6%E8%BF%9B%E5%85%A5"><span class="toc-text">创建项目文件夹并进入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="toc-text">npm设置代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-text">插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAcontracts%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">创建contracts文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99npx%E6%8C%82%E6%A2%AF%E5%AD%90"><span class="toc-text">给npx挂梯子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> ˋ( ° ▽、° ) </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Hardhat配置
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-05-05 15:33:37</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Hardhat" title="Hardhat">Hardhat</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="Hardhat配置"><a href="#Hardhat配置" class="headerlink" title="Hardhat配置"></a>Hardhat配置</h1><h3 id="安装wsl"><a href="#安装wsl" class="headerlink" title="安装wsl"></a>安装wsl</h3><p><code>wsl --install</code></p>
+<h3 id="设置-Linux-用户名和密码"><a href="#设置-Linux-用户名和密码" class="headerlink" title="设置 Linux 用户名和密码"></a>设置 Linux 用户名和密码</h3><h3 id="挂系统梯子"><a href="#挂系统梯子" class="headerlink" title="挂系统梯子"></a>挂系统梯子</h3><p><code>cat /etc/resolv.conf</code></p>
+<p><code>export  ALL_PROXY=http://172.31.160.1:1080</code></p>
+<h3 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h3><p><code>sudo apt-get install curl</code></p>
+<h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash</code></p>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><code>nvm install --lts</code></p>
+<p><code>node --version</code></p>
+<p><code>npm --version</code></p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><code>sudo apt-get install git</code></p>
+<h3 id="创建项目文件夹并进入"><a href="#创建项目文件夹并进入" class="headerlink" title="创建项目文件夹并进入"></a>创建项目文件夹并进入</h3><p><code>mkdir xxx</code></p>
+<p><code>cd xxx</code></p>
+<h3 id="npm设置代理"><a href="#npm设置代理" class="headerlink" title="npm设置代理"></a>npm设置代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> proxy http://server:port</span><br><span class="line">npm config <span class="built_in">set</span> https-proxy http://server:port</span><br></pre></td></tr></table></figure>
+
+<p><code>npm init</code></p>
+<p><code>npm install --save-dev hardhat</code></p>
+<p><code>npx hardhat init</code></p>
+<p><code>Create an empty hardhat.config.js</code></p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p><code>npm install --save-dev @nomicfoundation/hardhat-toolbox</code></p>
+<p>在<code>hardhat.config.js</code>中添加</p>
+<p><code>require(&quot;@nomicfoundation/hardhat-toolbox&quot;);</code></p>
+<h3 id="创建contracts文件夹"><a href="#创建contracts文件夹" class="headerlink" title="创建contracts文件夹"></a>创建<code>contracts</code>文件夹</h3><p><code>mkdir contracts</code></p>
+<h3 id="给npx挂梯子"><a href="#给npx挂梯子" class="headerlink" title="给npx挂梯子"></a>给<code>npx</code>挂梯子</h3><p>在<code>hardhat.config.js</code>中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// <span class="built_in">set</span> proxy</span><br><span class="line"></span><br><span class="line">const &#123; ProxyAgent, setGlobalDispatcher &#125; = require(<span class="string">&quot;undici&quot;</span>);</span><br><span class="line"></span><br><span class="line">const proxyAgent = new ProxyAgent(<span class="string">&#x27;http://192.168.48.1:1080&#x27;</span>); // change to yours</span><br><span class="line"></span><br><span class="line">setGlobalDispatcher(proxyAgent);</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p><code>npx hardhat compile</code></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://giscus.app/client.js"
+    data-repo="aircloud/hexo-aircloud-blog"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkxMjkwNDgyNjg="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOB7EezM4COhKJ"
+    data-mapping="title"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+
+
+
+</html>

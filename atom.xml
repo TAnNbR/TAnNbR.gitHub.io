@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tam&#39;s blog</title>
+  <icon>https://www.gravatar.com/avatar/2f58f77d5b516b291563686ed164bd51</icon>
+  <subtitle>ˋ( ° ▽、° )</subtitle>
+  <link href="https://tannbr.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://tannbr.github.io/"/>
+  <updated>2024-05-05T07:34:10.845Z</updated>
+  <id>https://tannbr.github.io/</id>
+  
+  <author>
+    <name>Tam</name>
+    <email>onlythen@yeah.net</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hardhat配置</title>
+    <link href="https://tannbr.github.io/2024/05/05/Hardhat%E9%85%8D%E7%BD%AE/"/>
+    <id>https://tannbr.github.io/2024/05/05/Hardhat%E9%85%8D%E7%BD%AE/</id>
+    <published>2024-05-05T07:33:37.000Z</published>
+    <updated>2024-05-05T07:34:10.845Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hardhat配置"><a href="#Hardhat配置" class="headerlink" title="Hardhat配置"></a>Hardhat配置</h1><h3 id="安装wsl"><a href="#安装wsl" class="headerlink" title="安装wsl"></a>安装wsl</h3><p><code>wsl --install</code></p><h3 id="设置-Linux-用户名和密码"><a href="#设置-Linux-用户名和密码" class="headerlink" title="设置 Linux 用户名和密码"></a>设置 Linux 用户名和密码</h3><h3 id="挂系统梯子"><a href="#挂系统梯子" class="headerlink" title="挂系统梯子"></a>挂系统梯子</h3><p><code>cat /etc/resolv.conf</code></p><p><code>export  ALL_PROXY=http://172.31.160.1:1080</code></p><h3 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h3><p><code>sudo apt-get install curl</code></p><h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash</code></p><h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><code>nvm install --lts</code></p><p><code>node --version</code></p><p><code>npm --version</code></p><h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><code>sudo apt-get install git</code></p><h3 id="创建项目文件夹并进入"><a href="#创建项目文件夹并进入" class="headerlink" title="创建项目文件夹并进入"></a>创建项目文件夹并进入</h3><p><code>mkdir xxx</code></p><p><code>cd xxx</code></p><h3 id="npm设置代理"><a href="#npm设置代理" class="headerlink" title="npm设置代理"></a>npm设置代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> proxy http://server:port</span><br><span class="line">npm config <span class="built_in">set</span> https-proxy http://server:port</span><br></pre></td></tr></table></figure><p><code>npm init</code></p><p><code>npm install --save-dev hardhat</code></p><p><code>npx hardhat init</code></p><p><code>Create an empty hardhat.config.js</code></p><h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p><code>npm install --save-dev @nomicfoundation/hardhat-toolbox</code></p><p>在<code>hardhat.config.js</code>中添加</p><p><code>require(&quot;@nomicfoundation/hardhat-toolbox&quot;);</code></p><h3 id="创建contracts文件夹"><a href="#创建contracts文件夹" class="headerlink" title="创建contracts文件夹"></a>创建<code>contracts</code>文件夹</h3><p><code>mkdir contracts</code></p><h3 id="给npx挂梯子"><a href="#给npx挂梯子" class="headerlink" title="给npx挂梯子"></a>给<code>npx</code>挂梯子</h3><p>在<code>hardhat.config.js</code>中添加</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// <span class="built_in">set</span> proxy</span><br><span class="line"></span><br><span class="line">const &#123; ProxyAgent, setGlobalDispatcher &#125; = require(<span class="string">&quot;undici&quot;</span>);</span><br><span class="line"></span><br><span class="line">const proxyAgent = new ProxyAgent(<span class="string">&#x27;http://192.168.48.1:1080&#x27;</span>); // change to yours</span><br><span class="line"></span><br><span class="line">setGlobalDispatcher(proxyAgent);</span><br></pre></td></tr></table></figure><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p><code>npx hardhat compile</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Hardhat配置&quot;&gt;&lt;a href=&quot;#Hardhat配置&quot; class=&quot;headerlink&quot; title=&quot;Hardhat配置&quot;&gt;&lt;/a&gt;Hardhat配置&lt;/h1&gt;&lt;h3 id=&quot;安装wsl&quot;&gt;&lt;a href=&quot;#安装wsl&quot; class=&quot;header</summary>
+      
+    
+    
+    
+    
+    <category term="Hardhat" scheme="https://tannbr.github.io/tags/Hardhat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo使用教程</title>
+    <link href="https://tannbr.github.io/2024/04/07/Hexo%E4%BD%BF%E7%94%A8/"/>
+    <id>https://tannbr.github.io/2024/04/07/Hexo%E4%BD%BF%E7%94%A8/</id>
+    <published>2024-04-07T08:10:20.000Z</published>
+    <updated>2024-05-05T07:14:04.015Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hexo使用"><a href="#Hexo使用" class="headerlink" title="Hexo使用"></a>Hexo使用</h1><h2 id="安装部署参考链接"><a href="#安装部署参考链接" class="headerlink" title="安装部署参考链接"></a>安装部署参考链接</h2><p><a href="https://blog.csdn.net/yaorongke/article/details/119089190">https://blog.csdn.net/yaorongke/article/details/119089190</a></p><h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post 文章名字</span><br></pre></td></tr></table></figure><h2 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h2><p>注意放在<code>source\_posts</code>目录下同名的资源目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 图片名字.png  %&#125;</span><br></pre></td></tr></table></figure><h2 id="修改、删除文章"><a href="#修改、删除文章" class="headerlink" title="修改、删除文章"></a>修改、删除文章</h2><p>修改或删除后执行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">删除文章文件：首先，进入到您的Hexo博客的/<span class="built_in">source</span>/_posts目录，找到并删除想要删除的文章文件，例如Test01.md。</span><br><span class="line">如果您已经将文章发布了，您可能还需要删除.deploy_git文件夹，这个文件夹包含了部署到服务器的文件。</span><br><span class="line">清理缓存：执行hexo clean命令来清除Hexo生成的缓存和静态文件。</span><br><span class="line">重新生成和部署：最后，执行hexo g -d</span><br><span class="line">如果问题依旧存在，您可能需要考虑删除db.json文件，这个文件包含了Hexo的数据缓存，有时候删除文章后需要清除这个缓存才能完全移除文章。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Hexo使用&quot;&gt;&lt;a href=&quot;#Hexo使用&quot; class=&quot;headerlink&quot; title=&quot;Hexo使用&quot;&gt;&lt;/a&gt;Hexo使用&lt;/h1&gt;&lt;h2 id=&quot;安装部署参考链接&quot;&gt;&lt;a href=&quot;#安装部署参考链接&quot; class=&quot;headerlink&quot; </summary>
+      
+    
+    
+    
+    
+    <category term="Hexo" scheme="https://tannbr.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
